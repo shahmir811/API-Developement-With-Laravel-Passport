@@ -16,7 +16,7 @@ require('./bootstrap');
 Vue.component('timeline', require('./components/Timeline.vue'));
 Vue.component('post-tweet', require('./components/PostTweet.vue'));
 
-Vue.http.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
+// Vue.http.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
 
 const app = new Vue({
     el: '#app'
