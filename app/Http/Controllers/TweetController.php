@@ -11,8 +11,21 @@ class TweetController extends Controller
 {
     public function index(Request $request)
     {
-        //return $request->user()->tweets()-->get();
-        return $request->user()->tweets()->with(['user'])->get();
+      return $request->user()->tweets()->with(['user'])->orderBy('created_at', 'desc')->get();
+    }
+
+    public function store(Request $request)
+    {
+      $this->validate($request, [
+        'body' => 'required'
+      ]);
+
+      $tweet = $request->user()->tweets()->create([
+         'body' => $request->body
+      ])->load('user'); //Load the user back
+
+      return $tweet; //Brings back the tweet the user just made
+
     }
 
 }
