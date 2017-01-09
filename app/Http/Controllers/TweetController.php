@@ -11,7 +11,7 @@ class TweetController extends Controller
 {
     public function index(Request $request)
     {
-      return $request->user()->tweets()->with(['user'])->orderBy('created_at', 'desc')->get();
+      return $request->user()->tweets()->with(['user'])->latestFirst()->get();
     }
 
     public function store(Request $request)
